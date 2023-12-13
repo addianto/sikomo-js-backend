@@ -1,0 +1,17 @@
+---
+env:
+  commonjs: true
+  es2021: true
+  node: true
+extends: standard
+parserOptions:
+  ecmaVersion: latest
+overrides:
+  - files:
+    - tests/**/*.js
+    plugins:
+      - jest
+    env:
+      jest/globals: true
+    extends:
+      - plugin:jest/recommended
