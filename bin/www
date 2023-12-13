@@ -1,12 +1,10 @@
 #!/usr/bin/env node
+import config from '../src/config/index.js'
+import app from '../src/app.js'
+import http from 'http'
 
-/**
- * Module dependencies.
- */
-const app = require('../src/app')
-const debug = require('debug')('sikomo-js-backend:server')
-const http = require('http')
-const config = require('../src/config')
+import debug from 'debug'
+const callDebug = debug('sikomo-js-backend:server')
 
 /**
  * Normalize a port into a number, string, or false.
@@ -62,7 +60,7 @@ const onListening = () => {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port
-  debug('Listening on ' + bind)
+  callDebug('Listening on ' + bind)
 }
 
 /**

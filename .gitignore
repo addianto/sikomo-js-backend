@@ -143,3 +143,9 @@ dist
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Project-specific files & folders to ignore
+data/*.json
+
+## Except
+!data/empty-seed.json

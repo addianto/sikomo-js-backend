@@ -1,25 +1,31 @@
-const { helloService } = require('../../../src/services')
+import { helloService } from '../../../src/services'
 
 describe('helloService', () => {
   describe('sayHello()', () => {
-    test('should return the correct message when input is present', () => {
+    test('should return the correct message when input is present', async () => {
       // Setup
       const testCaseInput = 'Alice'
 
       // Exercise
-      const testCaseOutput = helloService.sayHello(testCaseInput)
+      const testCaseOutput = await helloService.sayHello(testCaseInput)
 
       // Verify
-      expect(testCaseOutput).toBe('Hello, Alice')
+      expect(testCaseOutput).toStrictEqual({
+        name: 'Alice',
+        message: 'Hello, Alice'
+      })
     })
-    test('should return the correct message when input is empty', () => {
+    test('should return the correct message when input is empty', async () => {
       // No setup since the input is empty
 
       // Exercise
-      const testCaseOutput = helloService.sayHello()
+      const testCaseOutput = await helloService.sayHello()
 
       // Verify
-      expect(testCaseOutput).toBe('Hello, Anonymous')
+      expect(testCaseOutput).toStrictEqual({
+        name: 'Anonymous',
+        message: 'Hello, Anonymous'
+      })
     })
   })
 })

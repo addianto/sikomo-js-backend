@@ -1,11 +1,31 @@
-const sayHello = (name) => {
-  if (!name) {
-    return 'Hello, Anonymous'
+import config from '../config/index.js'
+import { JSONPreset } from 'lowdb/node'
+
+const db = await JSONPreset(
+  config.dbFilePath,
+  {
+    greetings: [
+      { name: 'Anonymous', message: 'Hello, Anonymous' }
+    ]
   }
+)
 
-  return `Hello, ${name}`
-}
+const { greetings } = db.data
 
-module.exports = {
-  sayHello
+export const helloService = {
+  sayHello: async (name) => {
+    const greetingName = (!name) ? 'Anonymous' : name
+    const foundGreeting = greetings.find((greeting) => greeting.name === greetingName)
+
+    if (foundGreeting) {
+      return foundGreeting
+    }
+
+    const newGreeting = { name, message: `Hello, ${name}` }
+    greetings.push(newGreeting)
+
+    await db.write()
+
+    return newGreeting
+  }
 }

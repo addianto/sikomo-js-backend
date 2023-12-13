@@ -1,4 +1,6 @@
 ---
+name: Continuous Integration
+
 on:
   push:
     branches: [ main ]
@@ -9,7 +11,7 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Checkout the repository
         uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -22,5 +24,7 @@ jobs:
           cache: pnpm
       - name: Install packages
         run: pnpm install
+      - name: Run lint
+        run: pnpm lint
       - name: Run tests
         run: pnpm test

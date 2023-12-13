@@ -1,10 +1,10 @@
-const express = require('express')
-const helloController = require('../../controllers/hello.controller')
+import express from 'express'
+import { helloController } from '../../controllers/hello.controller.js'
 
 const router = express.Router()
 
 router.get(
-  '/', helloController.hello
+  '/', helloController.getHello
 )
 
-module.exports = router
+export const helloRoute = router

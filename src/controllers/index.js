@@ -1,1 +1,2 @@
-module.exports.helloController = require('./hello.controller')
+export * from './hello.controller'
+export * from './animal.controller'

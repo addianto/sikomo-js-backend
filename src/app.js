@@ -1,7 +1,7 @@
-const createError = require('http-errors')
-const express = require('express')
-const logger = require('morgan')
-const routes = require('./routes/v1')
+import createError from 'http-errors'
+import express from 'express'
+import logger from 'morgan'
+import router from './routes/v1/index.js'
 
 const app = express()
 
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }))
 // TODO: Enable CORS
 
 // Use v1 API routes
-app.use('/v1', routes)
+app.use('/v1', router)
 
 // Catch HTTP 404 and forward to error handler
 app.use((req, res, next) => {
@@ -39,4 +39,4 @@ app.use((err, req, res, next) => {
   res.render('error')
 })
 
-module.exports = app
+export default app
