@@ -1,9 +1,6 @@
-import dotenv from 'dotenv'
-import path from 'path'
+import 'dotenv/config'
 
-dotenv.config({ path: path.join(__dirname, '../../.env') })
-
-export const config = {
+export default {
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000
 }

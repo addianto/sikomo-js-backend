@@ -1,5 +1,5 @@
 import httpStatus from 'http-status'
-import { helloService } from '../services'
+import { helloService } from '../services/index.js'
 
 export const helloController = {
   getHello: (request, response) => {
