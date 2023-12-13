@@ -1,1 +1,1 @@
-module.exports.helloService = require('./hello.service')
+export * from './hello.service'

@@ -1,6 +1,6 @@
-const httpMocks = require('node-mocks-http')
+import httpMocks from 'node-mocks-http'
 
-const { helloController } = require('../../../src/controllers')
+import { helloController } from '../../../src/controllers'
 
 describe('helloController', () => {
   describe('HTTP GET /hello using mocked request & response', () => {
@@ -14,7 +14,7 @@ describe('helloController', () => {
       const expectedResponse = httpMocks.createResponse()
 
       // Exercise
-      helloController.hello(mockRequest, expectedResponse)
+      helloController.getHello(mockRequest, expectedResponse)
 
       // Verify
       const jsonData = expectedResponse._getJSONData()
@@ -27,7 +27,7 @@ describe('helloController', () => {
       const expectedResponse = httpMocks.createResponse()
 
       // Exercise
-      helloController.hello(mockRequest, expectedResponse)
+      helloController.getHello(mockRequest, expectedResponse)
 
       // Verify
       const jsonData = expectedResponse._getJSONData()

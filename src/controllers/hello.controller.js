@@ -1,18 +1,16 @@
-const httpStatus = require('http-status')
-const { helloService } = require('../services')
+import httpStatus from 'http-status'
+import { helloService } from '../services'
 
-const hello = (request, response) => {
-  const name = request.body.name || 'Anonymous'
-  const output = helloService.sayHello(name)
+export const helloController = {
+  getHello: (request, response) => {
+    const name = request.body.name || 'Anonymous'
+    const output = helloService.sayHello(name)
 
-  response
-    .status(httpStatus.OK)
-    .type('json')
-    .json({
-      message: output
-    })
-}
-
-module.exports = {
-  hello
+    response
+      .status(httpStatus.OK)
+      .type('json')
+      .json({
+        message: output
+      })
+  }
 }

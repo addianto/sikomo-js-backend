@@ -1,11 +1,9 @@
-const sayHello = (name) => {
-  if (!name) {
-    return 'Hello, Anonymous'
+export const helloService = {
+  sayHello: (name) => {
+    if (!name) {
+      return 'Hello, Anonymous'
+    }
+
+    return `Hello, ${name}`
   }
-
-  return `Hello, ${name}`
-}
-
-module.exports = {
-  sayHello
 }

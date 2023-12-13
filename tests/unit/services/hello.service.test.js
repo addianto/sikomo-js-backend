@@ -1,4 +1,4 @@
-const { helloService } = require('../../../src/services')
+import { helloService } from '../../../src/services'
 
 describe('helloService', () => {
   describe('sayHello()', () => {
