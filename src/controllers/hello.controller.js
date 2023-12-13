@@ -2,15 +2,13 @@ import httpStatus from 'http-status'
 import { helloService } from '../services/index.js'
 
 export const helloController = {
-  getHello: (request, response) => {
+  getHello: async (request, response) => {
     const name = request.body.name || 'Anonymous'
-    const output = helloService.sayHello(name)
+    const output = await helloService.sayHello(name)
 
     response
       .status(httpStatus.OK)
       .type('json')
-      .json({
-        message: output
-      })
+      .json(output)
   }
 }
